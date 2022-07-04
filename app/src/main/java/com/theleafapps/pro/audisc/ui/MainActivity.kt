@@ -1,8 +1,8 @@
 package com.theleafapps.pro.audisc.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.theleafapps.pro.audisc.R
 import com.theleafapps.pro.audisc.databinding.ActivityMainBinding
 

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <!--    for refreshing layout on swipe from top-->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -117,7 +117,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"/>
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>
