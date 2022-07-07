@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.shuffleBtn.setOnClickListener {
-            Toast.makeText(this@MainActivity,"Button clicked",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@MainActivity, PlayerActivity::class.java)
+            intent.putExtra("index", 0)
+            intent.putExtra("class", "MainActivity")
+            startActivity(intent)
         }
         binding.favouriteBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, FavoriteActivity::class.java))
