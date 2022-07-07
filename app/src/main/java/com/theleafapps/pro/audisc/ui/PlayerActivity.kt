@@ -3,7 +3,6 @@ package com.theleafapps.pro.audisc.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.theleafapps.pro.audisc.R
-import com.theleafapps.pro.audisc.databinding.ActivityMainBinding
 import com.theleafapps.pro.audisc.databinding.ActivityPlayerBinding
 
 class PlayerActivity : AppCompatActivity() {

@@ -8,26 +8,22 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.theleafapps.pro.audisc.ui.PlaylistActivity
 import com.theleafapps.pro.audisc.R
+import com.theleafapps.pro.audisc.adapters.MusicAdapter
 import com.theleafapps.pro.audisc.databinding.ActivityMainBinding
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var musicAdapter: MusicAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestRuntimePermission()
-        setTheme(R.style.Theme_Audisc)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        // for Navigation Drawer
-        toggle = ActionBarDrawerToggle(this,binding.root,R.string.open,R.string.close)
-        binding.root.addDrawerListener(toggle)
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        initializeLayout()
 
         binding.shuffleBtn.setOnClickListener {
             val intent = Intent(this@MainActivity, PlayerActivity::class.java)
@@ -41,6 +37,39 @@ class MainActivity : AppCompatActivity() {
         binding.playlistBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, PlaylistActivity::class.java))
         }
+        binding.navView.setNavigationItemSelectedListener{
+            when(it.itemId){
+                R.id.navFeedback -> Toast.makeText(this,"Feedback Clicked",Toast.LENGTH_SHORT).show()
+                R.id.navSettings -> Toast.makeText(this,"Settings Clicked",Toast.LENGTH_SHORT).show()
+                R.id.navAbout -> Toast.makeText(this,"About Clicked",Toast.LENGTH_SHORT).show()
+                R.id.navExit -> exitProcess(1)
+            }
+            true
+        }
+    }
+
+    private fun initializeLayout() {
+        requestRuntimePermission()
+        setTheme(R.style.Theme_Audisc)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        // for Navigation Drawer
+        toggle = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
+        binding.root.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.musicRV.setHasFixedSize(true)
+        binding.musicRV.setItemViewCacheSize(13)
+        binding.musicRV.layoutManager = LinearLayoutManager(this)
+        val musicList = ArrayList<String>()
+        musicList.add("First Song")
+        musicList.add("Second Song")
+        musicList.add("Third Song")
+        musicList.add("Fourth Song")
+        musicList.add("Fifth Song")
+
+        musicAdapter = MusicAdapter(this,musicList)
+        binding.musicRV.adapter = musicAdapter
     }
 
     private fun requestRuntimePermission(){
