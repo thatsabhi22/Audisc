@@ -30,9 +30,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.theleafapps.pro.audisc.services.MusicService
 import com.theleafapps.pro.audisc.R
+import com.theleafapps.pro.audisc.data.*
 import com.theleafapps.pro.audisc.databinding.ActivityPlayerBinding
 import com.theleafapps.pro.audisc.databinding.AudioBoosterBinding
-import com.theleafapps.pro.audisc.data.Music
 
 class PlayerActivity : AppCompatActivity(), ServiceConnection, MediaPlayer.OnCompletionListener {
 

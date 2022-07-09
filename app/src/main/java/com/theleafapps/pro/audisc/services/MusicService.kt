@@ -12,8 +12,13 @@ import android.os.*
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import com.theleafapps.pro.audisc.ApplicationClass
 import com.theleafapps.pro.audisc.R
+import com.theleafapps.pro.audisc.broadcastreceiver.NotificationReceiver
+import com.theleafapps.pro.audisc.data.formatDuration
+import com.theleafapps.pro.audisc.data.getImgArt
 import com.theleafapps.pro.audisc.ui.MainActivity
+import com.theleafapps.pro.audisc.ui.NowPlaying
 import com.theleafapps.pro.audisc.ui.PlayerActivity
 
 class MusicService: Service(), AudioManager.OnAudioFocusChangeListener {

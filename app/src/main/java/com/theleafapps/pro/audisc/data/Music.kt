@@ -7,6 +7,7 @@ import android.media.MediaMetadataRetriever
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.color.MaterialColors
 import com.theleafapps.pro.audisc.R
+import com.theleafapps.pro.audisc.ui.FavoriteActivity
 import com.theleafapps.pro.audisc.ui.PlayerActivity
 import java.io.File
 import java.util.concurrent.TimeUnit
