@@ -16,6 +16,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.theleafapps.pro.audisc.R
 import com.theleafapps.pro.audisc.data.Music
 import com.theleafapps.pro.audisc.databinding.FavoriteViewBinding
+import com.theleafapps.pro.audisc.databinding.MoreFeaturesBinding
+import com.theleafapps.pro.audisc.ui.PlayNext
 import com.theleafapps.pro.audisc.ui.PlayerActivity
 
 class FavoriteAdapter(private val context: Context,
