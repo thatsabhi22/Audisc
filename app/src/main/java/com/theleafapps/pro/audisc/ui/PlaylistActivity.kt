@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.theleafapps.pro.audisc.R
+import com.theleafapps.pro.audisc.adapters.PlaylistViewAdapter
 import com.theleafapps.pro.audisc.data.MusicPlaylist
 import com.theleafapps.pro.audisc.data.Playlist
 import com.theleafapps.pro.audisc.data.setDialogBtnBackground
 import com.theleafapps.pro.audisc.databinding.ActivityPlaylistBinding
+import com.theleafapps.pro.audisc.databinding.AddPlaylistDialogBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

@@ -15,6 +15,7 @@ import com.theleafapps.pro.audisc.data.setDialogBtnBackground
 import com.theleafapps.pro.audisc.databinding.PlaylistViewBinding
 import com.theleafapps.pro.audisc.ui.MainActivity
 import com.theleafapps.pro.audisc.ui.PlaylistActivity
+import com.theleafapps.pro.audisc.ui.PlaylistDetails
 
 class PlaylistViewAdapter(private val context: Context, private var playlistList: ArrayList<Playlist>) : RecyclerView.Adapter<PlaylistViewAdapter.MyHolder>() {
 
