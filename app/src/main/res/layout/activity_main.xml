@@ -41,7 +41,7 @@
                         android:drawableTop="@drawable/shuffle_icon"
                         android:text="@string/shuffle_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/white" />
                     <!--Favourites Button-->
                     <Button
                         android:id="@+id/favouriteBtn"
@@ -53,7 +53,7 @@
                         android:drawableTop="@drawable/favourite_icon"
                         android:text="@string/favourites_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/white" />
                     <!--Playlists Button-->
                     <Button
                         android:id="@+id/playlistBtn"
@@ -65,7 +65,7 @@
                         android:drawableTop="@drawable/playlist_icon"
                         android:text="@string/playlist_btn"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/white" />
 
                     <!--Play Next Button-->
                     <Button
@@ -78,7 +78,7 @@
                         android:drawableTop="@drawable/play_next_icon"
                         android:text="@string/play_next"
                         android:textAllCaps="false"
-                        android:textColor="?colorOnPrimary" />
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
@@ -87,12 +87,14 @@
                     android:id="@+id/totalSongs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="16dp"
                     android:text="@string/total_songs"
-                    android:textColor="?colorOnPrimary" />
+                    android:textColor="@color/white" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/musicRV"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
