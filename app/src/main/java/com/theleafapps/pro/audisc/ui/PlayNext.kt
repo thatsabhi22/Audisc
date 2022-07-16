@@ -16,7 +16,6 @@ class PlayNext : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(MainActivity.currentTheme[MainActivity.themeIndex])
         val binding = ActivityPlayNextBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
