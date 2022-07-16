@@ -41,11 +41,9 @@ class MainActivity : AppCompatActivity() {
         lateinit var musicListSearch : ArrayList<Music>
         var search: Boolean = false
         var themeIndex: Int = 0
-        //val currentTheme = arrayOf(R.style.coolPink, R.style.coolBlue, R.style.coolPurple, R.style.coolGreen, R.style.coolBlack)
-        //val currentThemeNav = arrayOf(R.style.coolPinkNav, R.style.coolBlueNav, R.style.coolPurpleNav, R.style.coolGreenNav,
-        //    R.style.coolBlackNav)
-        //val currentGradient = arrayOf(R.drawable.gradient_pink, R.drawable.gradient_blue, R.drawable.gradient_purple, R.drawable.gradient_green,
-        //    R.drawable.gradient_black)
+        val currentTheme = arrayOf(R.style.coolBlack)
+        val currentThemeNav = arrayOf(R.style.coolBlackNav)
+        val currentGradient = arrayOf(R.drawable.gradient_black)
         var sortOrder: Int = 0
         val sortingList = arrayOf(MediaStore.Audio.Media.DATE_ADDED + " DESC", MediaStore.Audio.Media.TITLE,
             MediaStore.Audio.Media.SIZE + " DESC")
@@ -56,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val themeEditor = getSharedPreferences("THEMES", MODE_PRIVATE)
         themeIndex = themeEditor.getInt("themeIndex", 0)
+        setTheme(currentThemeNav[themeIndex])
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //for nav drawer
@@ -240,6 +239,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_view_menu, menu)
+        //for setting gradient
+        findViewById<LinearLayout>(R.id.linearLayoutNav)?.setBackgroundResource(currentGradient[themeIndex])
         val searchView = menu?.findItem(R.id.searchView)?.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean = true
