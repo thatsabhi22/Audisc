@@ -13,8 +13,8 @@
 
     //Theme for Activities
     <style name="coolPink" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="themeColor">@color/cool_pink</item>
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="themeColor">@color/orange_200</item>
+        <item name="colorPrimary">@color/gray</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondary">@color/orange_200</item>
