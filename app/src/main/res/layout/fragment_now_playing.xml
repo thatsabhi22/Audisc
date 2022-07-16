@@ -9,8 +9,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/songImgNP"
-        android:layout_width="70dp"
-        android:layout_height="55dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
         app:shapeAppearanceOverlay="@style/curved"
@@ -25,8 +25,8 @@
         app:iconTint="@color/white"
         android:backgroundTint="?attr/themeColor"
         android:layout_centerVertical="true"
-        app:iconSize="40dp"
-        android:layout_marginEnd="10dp"/>
+        app:iconSize="32dp"
+        android:layout_margin="8dp"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/playPauseBtnNP"
@@ -36,7 +36,7 @@
         app:iconTint="@color/white"
         android:backgroundTint="?attr/themeColor"
         android:layout_centerVertical="true"
-        app:iconSize="40dp"
+        app:iconSize="32dp"
         android:layout_toStartOf="@id/nextBtnNP"
         android:layout_marginHorizontal="5dp"/>
     <TextView

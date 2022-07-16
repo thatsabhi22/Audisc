@@ -19,10 +19,6 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Settings"
-        when(MainActivity.themeIndex){
-            0 -> binding.coolBlackTheme.setBackgroundColor(Color.YELLOW)
-        }
-        binding.coolBlackTheme.setOnClickListener { saveTheme(0) }
         binding.versionName.text = setVersionDetails()
         binding.sortBtn.setOnClickListener {
             val menuList = arrayOf("Recently Added", "Song Title", "File Size")
