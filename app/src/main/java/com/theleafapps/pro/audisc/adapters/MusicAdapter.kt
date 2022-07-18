@@ -48,7 +48,7 @@ class MusicAdapter(private val context: Context, private var musicList: ArrayLis
         holder.duration.text = formatDuration(musicList[position].duration)
         Glide.with(context)
             .load(musicList[position].artUri)
-            .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
+            .apply(RequestOptions().placeholder(R.drawable.music_note).centerCrop())
             .into(holder.image)
 
         //for play next feature

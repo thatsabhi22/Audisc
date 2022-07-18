@@ -34,7 +34,7 @@ class NowPlaying : Fragment() {
             PlayerActivity.musicService!!.createMediaPlayer()
             Glide.with(requireContext())
                 .load(PlayerActivity.musicListPA[PlayerActivity.songPosition].artUri)
-                .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
+                .apply(RequestOptions().placeholder(R.drawable.music_note).centerCrop())
                 .into(binding.songImgNP)
             binding.songNameNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].title
             PlayerActivity.musicService!!.showNotification(R.drawable.pause_icon)
@@ -56,7 +56,7 @@ class NowPlaying : Fragment() {
             binding.songNameNP.isSelected = true
             Glide.with(requireContext())
                 .load(PlayerActivity.musicListPA[PlayerActivity.songPosition].artUri)
-                .apply(RequestOptions().placeholder(R.drawable.music_player_icon_slash_screen).centerCrop())
+                .apply(RequestOptions().placeholder(R.drawable.music_note).centerCrop())
                 .into(binding.songImgNP)
             binding.songNameNP.text = PlayerActivity.musicListPA[PlayerActivity.songPosition].title
             if(PlayerActivity.isPlaying) binding.playPauseBtnNP.setIconResource(R.drawable.pause_icon)

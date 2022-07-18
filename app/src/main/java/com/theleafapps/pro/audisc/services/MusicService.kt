@@ -66,7 +66,7 @@ class MusicService: Service(), AudioManager.OnAudioFocusChangeListener {
         val image = if(imgArt != null){
             BitmapFactory.decodeByteArray(imgArt, 0, imgArt.size)
         }else{
-            BitmapFactory.decodeResource(resources, R.drawable.music_player_icon_slash_screen)
+            BitmapFactory.decodeResource(resources, R.drawable.music_note)
         }
 
         val notification = androidx.core.app.NotificationCompat.Builder(baseContext, ApplicationClass.CHANNEL_ID)

@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:layout_margin="16dp"
         android:gravity="center_vertical"
-        android:src="@drawable/music_player_icon_slash_screen"
+        android:src="@drawable/music_note"
         app:shapeAppearanceOverlay="@style/curved" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
