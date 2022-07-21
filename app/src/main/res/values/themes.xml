@@ -1,10 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="splash_screen" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-    </style>
-
     <attr name="themeColor" format="color"/>
 
     <!--    Background as well as text color for alert dialog buttons-->
@@ -35,5 +29,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/themeColor</item>
         <item name="dialogBtnBackground">@color/white</item>
         <item name="dialogTextColor">@color/black</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/gray</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_app_icon</item>
+        <item name="postSplashScreenTheme">@style/coolBlack</item>
     </style>
 </resources>
