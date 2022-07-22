@@ -10,8 +10,7 @@
         android:id="@+id/linearLayoutPN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="?attr/themeColor"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,23 +19,37 @@
         <ImageButton
             android:id="@+id/backBtnPN"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/back_btn"
-            android:padding="5dp"
             android:src="@drawable/back_icon"
             app:tint="@color/white" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/playNextTitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:contentDescription="@string/play_next"
             android:gravity="center"
             android:text="@string/play_next"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playNextRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:paddingBottom="40dp"
+        android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutPN" />
 
     <TextView
         android:id="@+id/instructionPN"
@@ -52,15 +65,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/playNextRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="40dp"
-        android:scrollbarThumbVertical="@drawable/scroll_bar_icon"
-        android:scrollbars="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutPN" />
 </androidx.constraintlayout.widget.ConstraintLayout>
