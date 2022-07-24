@@ -2,6 +2,7 @@ package com.theleafapps.pro.audisc.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.theleafapps.pro.audisc.R
 import com.theleafapps.pro.audisc.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity(){
@@ -17,6 +18,6 @@ class AboutActivity : AppCompatActivity(){
         binding.aboutText.text = aboutText()
     }
     private fun aboutText(): String{
-        return ""
+        return getString(R.string.about_text)
     }
 }

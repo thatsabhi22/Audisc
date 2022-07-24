@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AboutActivity">
-
+    android:background="@color/gray"
+    android:layout_height="match_parent">
     <TextView
         android:id="@+id/aboutText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/about"
-        android:textSize="18sp"
-        android:layout_margin="16dp"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:text="@string/about_text"
+        android:textColor="@color/orange_200"
+        android:textSize="20sp"/>
+</LinearLayout>
