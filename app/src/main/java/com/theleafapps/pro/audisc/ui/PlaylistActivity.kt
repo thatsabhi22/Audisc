@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.theleafapps.pro.audisc.R
 import com.theleafapps.pro.audisc.adapters.PlaylistViewAdapter
@@ -35,7 +36,7 @@ class PlaylistActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.playlistRV.setHasFixedSize(true)
         binding.playlistRV.setItemViewCacheSize(13)
-        binding.playlistRV.layoutManager = GridLayoutManager(this@PlaylistActivity, 2)
+        binding.playlistRV.layoutManager = LinearLayoutManager(this@PlaylistActivity)
         adapter = PlaylistViewAdapter(this, playlistList = musicPlaylist.ref)
         binding.playlistRV.adapter = adapter
         binding.backBtnPLA.setOnClickListener { finish() }
@@ -61,7 +62,6 @@ class PlaylistActivity : AppCompatActivity() {
             }.create()
         dialog.show()
         setDialogBtnBackground(this, dialog)
-
     }
     private fun addPlaylist(name: String, createdBy: String){
         var playlistExists = false

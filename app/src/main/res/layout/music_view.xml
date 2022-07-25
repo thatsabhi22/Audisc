@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="65dp"
@@ -13,17 +13,21 @@
         android:layout_height="55dp"
         android:src="@drawable/exit_icon"
         app:shapeAppearanceOverlay="@style/curved"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginVertical="5dp"/>
 
     <TextView
         android:id="@+id/songNameMV"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+
         android:layout_toStartOf="@id/songDuration"
         android:layout_toEndOf="@id/imageMV"
         android:gravity="center_vertical"
         android:singleLine="true"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:text="@string/song_name"
         android:textColor="?colorOnPrimary"
         android:layout_marginStart="70dp"
@@ -33,6 +37,8 @@
         android:id="@+id/songAlbumMV"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:text="@string/song_name"
         android:layout_toEndOf="@id/imageMV"
         android:layout_toStartOf="@id/songDuration"
@@ -51,6 +57,6 @@
         android:gravity="center"
         android:layout_gravity="end"
         android:textColor="?colorOnPrimary"
-        android:layout_marginHorizontal="5dp"/>
+        android:layout_marginHorizontal="8dp"/>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
