@@ -37,17 +37,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var musicAdapter: MusicAdapter
 
-    companion object{
-        lateinit var MusicListMA : ArrayList<Music>
-        lateinit var musicListSearch : ArrayList<Music>
+    companion object {
+        lateinit var MusicListMA: ArrayList<Music>
+        lateinit var musicListSearch: ArrayList<Music>
         var search: Boolean = false
         var themeIndex: Int = 0
         val currentTheme = arrayOf(R.style.coolBlack)
         val currentThemeNav = arrayOf(R.style.coolBlackNav)
         val currentGradient = arrayOf(R.drawable.gradient_black)
         var sortOrder: Int = 0
-        val sortingList = arrayOf(MediaStore.Audio.Media.DATE_ADDED + " DESC", MediaStore.Audio.Media.TITLE,
-            MediaStore.Audio.Media.SIZE + " DESC")
+        val sortingList = arrayOf(
+            MediaStore.Audio.Media.DATE_ADDED + " DESC", MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media.SIZE + " DESC"
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -60,29 +62,30 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //for nav drawer
-        toggle = ActionBarDrawerToggle(this, binding.root,R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
         binding.root.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //checking for dark theme
-        if(themeIndex == 4 &&  resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_NO)
+        if (themeIndex == 4 && resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_NO)
             Toast.makeText(this, "Black Theme Works Best in Dark Mode!!", Toast.LENGTH_LONG).show()
 
-        if(requestRuntimePermission()){
+        if (requestRuntimePermission()) {
             initializeLayout()
             //for retrieving favourites data using shared preferences
             FavoriteActivity.favouriteSongs = ArrayList()
             val editor = getSharedPreferences("FAVOURITES", MODE_PRIVATE)
             val jsonString = editor.getString("FavouriteSongs", null)
-            val typeToken = object : TypeToken<ArrayList<Music>>(){}.type
-            if(jsonString != null){
+            val typeToken = object : TypeToken<ArrayList<Music>>() {}.type
+            if (jsonString != null) {
                 val data: ArrayList<Music> = GsonBuilder().create().fromJson(jsonString, typeToken)
                 FavoriteActivity.favouriteSongs.addAll(data)
             }
             PlaylistActivity.musicPlaylist = MusicPlaylist()
             val jsonStringPlaylist = editor.getString("MusicPlaylist", null)
-            if(jsonStringPlaylist != null){
-                val dataPlaylist: MusicPlaylist = GsonBuilder().create().fromJson(jsonStringPlaylist, MusicPlaylist::class.java)
+            if (jsonStringPlaylist != null) {
+                val dataPlaylist: MusicPlaylist =
+                    GsonBuilder().create().fromJson(jsonStringPlaylist, MusicPlaylist::class.java)
                 PlaylistActivity.musicPlaylist = dataPlaylist
             }
         }
@@ -102,20 +105,24 @@ class MainActivity : AppCompatActivity() {
         binding.playNextBtn.setOnClickListener {
             startActivity(Intent(this@MainActivity, PlayNext::class.java))
         }
-        binding.navView.setNavigationItemSelectedListener{
-            when(it.itemId)
-            {
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
 //                R.id.navFeedback -> startActivity(Intent(this@MainActivity, FeedbackActivity::class.java))
-                R.id.navSettings -> startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
+                R.id.navSettings -> startActivity(
+                    Intent(
+                        this@MainActivity,
+                        SettingsActivity::class.java
+                    )
+                )
                 R.id.navAbout -> startActivity(Intent(this@MainActivity, AboutActivity::class.java))
                 R.id.navExit -> {
                     val builder = MaterialAlertDialogBuilder(this)
                     builder.setTitle("Exit")
                         .setMessage("Do you want to close app?")
-                        .setPositiveButton("Yes"){ _, _ ->
+                        .setPositiveButton("Yes") { _, _ ->
                             exitApplication()
                         }
-                        .setNegativeButton("No"){dialog, _ ->
+                        .setNegativeButton("No") { dialog, _ ->
                             dialog.dismiss()
                         }
                     val customDialog = builder.create()
@@ -127,38 +134,54 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
     //For requesting permission
-    private fun requestRuntimePermission() :Boolean{
-        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 13)
+    private fun requestRuntimePermission(): Boolean {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                13
+            )
             return false
         }
         return true
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == 13){
-            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "Permission Granted",Toast.LENGTH_SHORT).show()
+        if (requestCode == 13) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
                 initializeLayout()
-            }
-            else
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), 13)
+            } else
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    13
+                )
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item))
+        if (toggle.onOptionsItemSelected(item))
             return true
         return super.onOptionsItemSelected(item)
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
     @SuppressLint("SetTextI18n")
-    private fun initializeLayout(){
+    private fun initializeLayout() {
         search = false
         val sortEditor = getSharedPreferences("SORTING", MODE_PRIVATE)
         sortOrder = sortEditor.getInt("sortOrder", 0)
@@ -168,7 +191,7 @@ class MainActivity : AppCompatActivity() {
         binding.musicRV.layoutManager = LinearLayoutManager(this@MainActivity)
         musicAdapter = MusicAdapter(this@MainActivity, MusicListMA)
         binding.musicRV.adapter = musicAdapter
-        binding.totalSongs.text  = "Total Songs : "+musicAdapter.itemCount
+        binding.totalSongs.text = "Total Songs : " + musicAdapter.itemCount
 
         //for refreshing layout on swipe from top
         binding.refreshLayout.setOnRefreshListener {
@@ -178,34 +201,61 @@ class MainActivity : AppCompatActivity() {
             binding.refreshLayout.isRefreshing = false
         }
     }
+
     @SuppressLint("Recycle", "Range")
     @RequiresApi(Build.VERSION_CODES.R)
-    private fun getAllAudio(): ArrayList<Music>{
+    private fun getAllAudio(): ArrayList<Music> {
         val tempList = ArrayList<Music>()
-        val selection = MediaStore.Audio.Media.IS_MUSIC +  " != 0"
-        val projection = arrayOf(MediaStore.Audio.Media._ID,MediaStore.Audio.Media.TITLE,MediaStore.Audio.Media.ALBUM,
-            MediaStore.Audio.Media.ARTIST,MediaStore.Audio.Media.DURATION,MediaStore.Audio.Media.DATE_ADDED,
-            MediaStore.Audio.Media.DATA, MediaStore.Audio.Media.ALBUM_ID)
-        val cursor = this.contentResolver.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection,selection,null,
-            sortingList[sortOrder], null)
-        if(cursor != null){
-            if(cursor.moveToFirst())
+        val selection = MediaStore.Audio.Media.IS_MUSIC + " != 0"
+        val projection = arrayOf(
+            MediaStore.Audio.Media._ID,
+            MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media.ALBUM,
+            MediaStore.Audio.Media.ARTIST,
+            MediaStore.Audio.Media.DURATION,
+            MediaStore.Audio.Media.DATE_ADDED,
+            MediaStore.Audio.Media.DATA,
+            MediaStore.Audio.Media.ALBUM_ID
+        )
+        val cursor = this.contentResolver.query(
+            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection, selection, null,
+            sortingList[sortOrder], null
+        )
+        if (cursor != null) {
+            if (cursor.moveToFirst())
                 do {
-                    val titleC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))?:"Unknown"
-                    val idC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID))?:"Unknown"
-                    val albumC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM))?:"Unknown"
-                    val artistC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST))?:"Unknown"
+                    val titleC =
+                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE))
+                            ?: "Unknown"
+                    val idC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media._ID))
+                        ?: "Unknown"
+                    val albumC =
+                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM))
+                            ?: "Unknown"
+                    val artistC =
+                        cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST))
+                            ?: "Unknown"
                     val pathC = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA))
-                    val durationC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
-                    val albumIdC = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID)).toString()
+                    val durationC =
+                        cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))
+                    val albumIdC =
+                        cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID))
+                            .toString()
                     val uri = Uri.parse("content://media/external/audio/albumart")
                     val artUriC = Uri.withAppendedPath(uri, albumIdC).toString()
-                    val music = Music(id = idC, title = titleC, album = albumC, artist = artistC, path = pathC, duration = durationC,
-                        artUri = artUriC)
+                    val music = Music(
+                        id = idC,
+                        title = titleC,
+                        album = albumC,
+                        artist = artistC,
+                        path = pathC,
+                        duration = durationC,
+                        artUri = artUriC
+                    )
                     val file = File(music.path)
-                    if(file.exists())
+                    if (file.exists())
                         tempList.add(music)
-                }while (cursor.moveToNext())
+                } while (cursor.moveToNext())
             cursor.close()
         }
         return tempList
@@ -213,7 +263,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if(!PlayerActivity.isPlaying && PlayerActivity.musicService != null){
+        if (!PlayerActivity.isPlaying && PlayerActivity.musicService != null) {
             exitApplication()
         }
     }
@@ -231,12 +281,12 @@ class MainActivity : AppCompatActivity() {
         //for sorting
         val sortEditor = getSharedPreferences("SORTING", MODE_PRIVATE)
         val sortValue = sortEditor.getInt("sortOrder", 0)
-        if(sortOrder != sortValue){
+        if (sortOrder != sortValue) {
             sortOrder = sortValue
             MusicListMA = getAllAudio()
             musicAdapter.updateMusicList(MusicListMA)
         }
-        if(PlayerActivity.musicService != null) binding.nowPlaying.visibility = View.VISIBLE
+        if (PlayerActivity.musicService != null) binding.nowPlaying.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -244,14 +294,14 @@ class MainActivity : AppCompatActivity() {
         //for setting gradient
         findViewById<LinearLayout>(R.id.linearLayoutNav)?.setBackgroundResource(currentGradient[themeIndex])
         val searchView = menu?.findItem(R.id.searchView)?.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean = true
             override fun onQueryTextChange(newText: String?): Boolean {
                 musicListSearch = ArrayList()
-                if(newText != null){
+                if (newText != null) {
                     val userInput = newText.lowercase()
                     for (song in MusicListMA)
-                        if(song.title.lowercase().contains(userInput))
+                        if (song.title.lowercase().contains(userInput))
                             musicListSearch.add(song)
                     search = true
                     musicAdapter.updateMusicList(searchList = musicListSearch)
