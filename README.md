@@ -20,7 +20,8 @@ Download Audisc today and start listening to your favorite music like never befo
 
 
 ## Screens
-![Alt text](/Screenshots/homepage_with_now_playing.jpg?raw=true)
-![Alt text](/Screenshots/player_view.jpg?raw=true)
-![Alt text](/Screenshots/navigation.jpg?raw=true)
+![homepage_with_now_playing](https://user-images.githubusercontent.com/24782276/218275758-d0234f78-3d6b-4979-99b8-c2671bae3e24.jpg)
+![navigation](https://user-images.githubusercontent.com/24782276/218275766-6bc02a7d-d29d-4889-a19f-bf66f525b202.jpg)
+![playerview](https://user-images.githubusercontent.com/24782276/218275768-3e6ac1e5-ebcd-4633-85b9-a2ad999cf434.jpg)
+
 
